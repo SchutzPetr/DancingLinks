@@ -45,12 +45,12 @@ public class DancingLinks {
         }
         header = header.right.column;
 
-        for (int[] row : matrix) {
+        for (int i = 0; i < matrix.length; i++) {
             DancingLinksNode prev = null;
             for (int j = 0; j < matrix[0].length; j++) {
-                if (row[j] == 1) {
+                if (matrix[i][j] == 1) {
                     DancingLinksColumn column = columnNodes.get(j);
-                    DancingLinksNode newNode = new DancingLinksNode(column);
+                    DancingLinksNode newNode = new DancingLinksNode(column, i);
                     if (prev == null) {
                         prev = newNode;
                     }
@@ -74,9 +74,11 @@ public class DancingLinks {
      */
     private void search(int k) {
         if (this.root.right == this.root) {
+            System.out.println("--------------------------------------------------------------------------------------");
             for (DancingLinksNode node : this.result) {
-                StringBuilder result = new StringBuilder();
-                result.append(node.column.name).append(" ");
+                StringBuilder result = new StringBuilder("ROW: ");
+                result.append(node.row).append(" Columns: ").append(node.column.name).append(" ");
+
                 DancingLinksNode tmp = node.right;
                 while (tmp != node) {
                     result.append(tmp.column.name).append(" ");
@@ -86,8 +88,8 @@ public class DancingLinks {
             }
 
             this.solution++;
-            System.out.println(this.solution);
-
+            System.out.println("--------------------------------------------------------------------------------------");
+            System.out.println("Number of solutions: " + this.solution);
             return;
         }
 

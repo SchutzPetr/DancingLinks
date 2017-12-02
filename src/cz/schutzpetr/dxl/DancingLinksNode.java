@@ -12,16 +12,18 @@ class DancingLinksNode {
     DancingLinksNode down;
     DancingLinksNode left;
     DancingLinksColumn column;
+    int row;
 
-    DancingLinksNode() {
+    DancingLinksNode(int row) {
         this.right = this;
         this.up = this;
         this.down = this;
         this.left = this;
+        this.row = row;
     }
 
-    DancingLinksNode(DancingLinksColumn column) {
-        this();
+    DancingLinksNode(DancingLinksColumn column, int row) {
+        this(row);
         this.column = column;
     }
 

@@ -12,6 +12,7 @@ class DancingLinksColumn extends DancingLinksNode {
     private DancingLinks dancingLinks;
 
     DancingLinksColumn(DancingLinks dancingLinks, String name) {
+        super(-1);
         this.size = 0;
         this.dancingLinks = dancingLinks;
         this.name = name;
